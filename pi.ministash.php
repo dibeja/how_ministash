@@ -5,46 +5,53 @@ $plugin_info = array(
   'pi_version' => '1.0',
   'pi_author' => 'Dibeja',
   'pi_author_url' => 'https://github.com/dibeja/how_ministash',
-  'pi_description' => 'A "Stash Like" plugin for EE 1.x',
+  'pi_description' => 'A Stash Like plugin for EE 1.x',
   'pi_usage' => Ministash::usage()
   );
 
-class Ministash
-{
-  global $SESS;
-  global $TMPL;
-  var $return_data = "";
+class Ministash {
+  
+  	var $return_data = "";
+	var $name;
 
   function Ministash()
   {
-    $this->EE->session->cache['ministash']
+    global $SESS, $TMPL;
+		
+		$this->name = $TMPL->fetch_param('name');
+		$this->data = $TMPL->tagdata;
+		
+		$SESS->cache['ministash'];
   }
 
   function set()
   {
-    $name = $TMPL->fetch_param('name');
-    $this->EE->session->cache['ministash'][$name] = $TMPL->tagdata;
+		global $SESS;
+		$SESS->cache['ministash'][$this->name] = $this->data;
   }
 
   function append()
-  {
-    $name = $TMPL->fetch_param('name');
-    if(isset(this->EE->session->cache['ministash'][$name]))
-    {
-      $this->EE->session->cache['ministash'][$name] .= $TMPL->tagdata;
+  { 
+	global $SESS;
+	if(isset($SESS->cache['ministash'][$this->name])){
+      $SESS->cache['ministash'][$this->name] .= $this->data;
     } else {
-      $this->EE->session->cache['ministash'][$name] = $TMPL->tagdata;
+      $SESS->cache['ministash'][$this->name] = $this->data;
     }
   }
 
   function get()
   {
-    $name = $TMPL->fetch_param('name');
-    if(isset(this->EE->session->cache['ministash'][$name]))
+	global $SESS;
+	if(isset($SESS->cache['ministash'][$this->name]))
     {
-      $this->return_data = $this->EE->session->cache['ministash'][$name];
-    }
+      $this->return_data = $SESS->cache['ministash'][$this->name];
+    } else {
+		$this->return_data = '';
+	}
+	return $this->return_data;
   }
+
   // ----------------------------------------
   //  Plugin Usage
   // ----------------------------------------
