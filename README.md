@@ -24,8 +24,11 @@ __GET:__
 
 To retrieve the content previously set
 
+__INSTALLATION:__  
+Just put the pi.ministash.php file inside system > plugins
+
 __IMPORTANT!__
-In EE1 the pagination is appended at the bottom of the resultset, so you cannot stash it! Sorry folks, it's not my fault :)
+In EE1 the pagination is appended at the top or at bottom of the resultset, so you cannot stash it! Sorry folks, it's not my fault :)
 
 __THANKS TO:__
 Mark Croxton: for the wonderful and original Stash plugin

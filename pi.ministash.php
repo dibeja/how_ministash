@@ -63,20 +63,21 @@ class Ministash {
   {
   ob_start(); 
   ?>
-The Ministash Plugin is aimed to give EE1 users the opportunity to use partials and layouts (more info about in this very good article by John D Wells: http://johndwells.com/blog/homegrown-plugin-to-create-template-partials-for-expressionengine)
+The Ministash Plugin is aimed to give EE1 users the opportunity to use partials and layouts 
+(more info about in this very good article by John D Wells: http://johndwells.com/blog/homegrown-plugin-to-create-template-partials-for-expressionengine)
 
-It's MINI so you have only three funcions:
+It's MINI so you have only three functions:
 
 SET:
 {exp:ministash:set name="YOURSTASHNAME"}
-  content
+  content to be stashed
 {/exp:ministash}
 
 To set a "one time" stash
 
 APPEND:
 {exp:ministash:append name="YOURSTASHNAME"}
-  content
+  content to be appended
 {/exp:ministash}
 
 To add content at the bottom of a stash
@@ -87,7 +88,7 @@ GET:
 To retrieve the content previously set
 
 IMPORTANT!
-In EE1 the pagination is appended at the bottom of the resultset, so you cannot stash it! Sorry folks, it's not my fault :)
+In EE1 the pagination is appended directly to the resultset, so you cannot stash it! Sorry folks, it's not my fault :)
 
 THANKS TO:
 Mark Croxton: for the wonderful and original Stash plugin
